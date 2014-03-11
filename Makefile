@@ -4,7 +4,7 @@
 CXX			= g++ # -pg
 CXXFLAGS	= -pipe -Wall -std=c++11 -O2 -mtune=native # -Wfatal-errors -g -ggdb
 LDFLAGS		= -s
-SRC_NAME	= main
+SRC_NAME	= main mask_enum
 LIBS		=
 EXECUTABLE	= mask_enum
 SRC_EXT		= cpp
