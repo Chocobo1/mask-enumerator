@@ -19,7 +19,14 @@ int main( const int argc , char *argv[] )
 
 	const uint32_t val = strtoul( argv[1] , NULL , 0 );
 	const uint32_t mask = strtoul( argv[2] , NULL , 0 );
-	maskEnum( val , mask );
+	MaskEnum a( val , mask );
+
+	// output results
+	const auto results = a.getOutput();
+	for( const auto &i : *results )
+	{
+		printf( "%u\n" , i );
+	}
 
 //	system( "pause" );
 	return 0;

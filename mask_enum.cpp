@@ -1,19 +1,15 @@
 #include "mask_enum.hpp"
 
-#include <set>
 
-
-void maskEnum( const uint32_t val , const uint32_t mask )
+MaskEnum::MaskEnum( const uint32_t val , const uint32_t mask )
 {
-	// scan
 	const uint32_t base = val & mask;
-	std::set< uint32_t > my_set;
 	my_set.emplace( base );
 
 	uint32_t p = 1;
 	const uint32_t inv_mask = ~mask;
 	const size_t max_range = std::max( log2( val ) , log2( mask ) );
-	for( size_t i = 0 ; i < max_range ; ++i )
+	for( size_t i = 0 ; i <= max_range ; ++i )  // scan for don't care bits
 	{
 		if( p & inv_mask )  // encountered don't care bit
 		{
@@ -21,7 +17,6 @@ void maskEnum( const uint32_t val , const uint32_t mask )
 			for( const auto &j : my_set )
 			{
 				tmp_set.emplace( j + p );
-				// printf("new: %d\n" , j+p);
 			}
 
 			for( const auto &j : tmp_set )
@@ -32,16 +27,17 @@ void maskEnum( const uint32_t val , const uint32_t mask )
 		p <<= 1;
 	}
 
-	for( const auto &i : my_set )
-	{
-		printf( "%u\n" , i );
-	}
-
 	return;
 }
 
 
-size_t log2( uint32_t v )
+const MaskEnum::MaskEnumSet *MaskEnum::getOutput() const
+{
+	return &my_set;
+}
+
+
+size_t MaskEnum::log2( uint32_t v ) const
 {
 	// from http://stackoverflow.com/questions/11376288/fast-computing-of-log2-for-64-bit-integers
 	const size_t tab32[] =
