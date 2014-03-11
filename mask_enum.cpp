@@ -8,7 +8,7 @@ MaskEnum::MaskEnum( const uint32_t val , const uint32_t mask )
 
 	uint32_t p = 1;
 	const uint32_t inv_mask = ~mask;
-	const size_t max_range = std::max( log2( val ) , log2( mask ) );
+	const size_t max_range = std::max( intLog2( val ) , intLog2( mask ) );
 	for( size_t i = 0 ; i <= max_range ; ++i )  // scan for don't care bits
 	{
 		if( p & inv_mask )  // encountered don't care bit
@@ -37,7 +37,7 @@ const MaskEnum::MaskEnumSet *MaskEnum::getOutput() const
 }
 
 
-size_t MaskEnum::log2( uint32_t v ) const
+size_t MaskEnum::intLog2( uint32_t v ) const
 {
 	// from http://stackoverflow.com/questions/11376288/fast-computing-of-log2-for-64-bit-integers
 	const size_t tab32[] =

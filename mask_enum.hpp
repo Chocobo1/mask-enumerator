@@ -16,7 +16,7 @@ class MaskEnum
 
 
 	private:
-		size_t log2( uint32_t v ) const;
+		size_t intLog2( uint32_t v ) const;
 
 		MaskEnum::MaskEnumSet my_set;
 };
