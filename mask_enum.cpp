@@ -16,12 +16,12 @@ MaskEnum::MaskEnum( const uint32_t val , const uint32_t mask )
 			decltype( my_set ) tmp_set;
 			for( const auto &j : my_set )
 			{
-				tmp_set.emplace( j + p );
+				tmp_set.emplace_hint( tmp_set.cend() , j + p );
 			}
 
 			for( const auto &j : tmp_set )
 			{
-				my_set.emplace( std::move( j ) );
+				my_set.emplace( j );
 			}
 		}
 		p <<= 1;
