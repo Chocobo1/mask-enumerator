@@ -18,11 +18,7 @@ MaskEnum::MaskEnum( const uint32_t val , const uint32_t mask )
 			{
 				tmp_set.emplace_hint( tmp_set.cend() , j + p );
 			}
-
-			for( const auto &j : tmp_set )
-			{
-				my_set.emplace( j );
-			}
+			my_set.insert( tmp_set.cbegin() , tmp_set.cend() );
 		}
 		p <<= 1;
 	}
