@@ -17,6 +17,7 @@ int main( const int argc , char *argv[] )
 		exit( EXIT_FAILURE );
 	}
 
+	// do calculation
 	const uint32_t val = strtoul( argv[1] , NULL , 0 );
 	const uint32_t mask = strtoul( argv[2] , NULL , 0 );
 	MaskEnum a( val , mask );
