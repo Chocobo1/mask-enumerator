@@ -2,6 +2,7 @@
 #define mask_enum_HPP
 
 #include <string>
+#include <stdint.h>
 
 
 class MaskEnum

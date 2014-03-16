@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstdlib>
 #include <string>
 
 #include "mask_enum.hpp"
@@ -49,7 +50,7 @@ void printArg( const int argc , char *argv[] )
 {
 	printf( "argc: %d\n" , argc );
 
-	for( auto i = 1 ; i < argc ; ++i )
+	for( int i = 1 ; i < argc ; ++i )
 	{
 		printf( "argv[%d]: %s\n" , i , argv[i] );
 	}
