@@ -20,20 +20,14 @@ MaskEnum::MaskEnum( const uint32_t val , const uint32_t mask ) : base( val &mask
 }
 
 
-bool MaskEnum::haveMore() const
+size_t MaskEnum::numOfResult() const
 {
-	const size_t a = ( 1 << range );
-	if( counter < a )
-		return true;
-	return false;
+	return ( 1 << range );
 }
 
 
 uint32_t MaskEnum::getOutput()
 {
-	if( !haveMore() )
-		return 0;
-
 	const size_t i = counter;
 	uint32_t result = base;
 	for( size_t j = 0 ; j < range ; ++j )  // scan through each don't care bit

@@ -8,8 +8,8 @@ class MaskEnum
 {
 	public:
 		explicit MaskEnum( const uint32_t val , const uint32_t mask );
-		uint32_t getOutput();
-		bool haveMore() const;
+		size_t numOfResult() const;
+		uint32_t getOutput();  // only valid in range of [ 0 , numOfResult() - 1 ]
 
 
 	private:

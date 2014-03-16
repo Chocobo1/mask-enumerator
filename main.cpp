@@ -23,9 +23,8 @@ int main( const int argc , char *argv[] )
 	MaskEnum a( val , mask );
 
 	// output results
-	while( a.haveMore() )
+	for( size_t i = 0 ; i < a.numOfResult() ; ++i )
 	{
-		a.getOutput();
 		printf( "%u\n" , a.getOutput() );
 	}
 
