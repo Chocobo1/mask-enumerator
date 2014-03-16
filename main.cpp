@@ -26,7 +26,7 @@ int main( const int argc , char *argv[] )
 	// output results
 	for( size_t i = 0 ; i < a.numOfResults() ; ++i )
 	{
-		printf( "%u\n" , a.getOutput() );
+		printf( "%u\n" , a.getNum() );
 	}
 
 //	system( "pause" );

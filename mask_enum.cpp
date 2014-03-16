@@ -26,7 +26,7 @@ size_t MaskEnum::numOfResults() const
 }
 
 
-uint32_t MaskEnum::getOutput()
+uint32_t MaskEnum::getNum()
 {
 	uint32_t result = base;
 	for( size_t i = 0 ; i < range ; ++i )  // scan through each don't care bit
