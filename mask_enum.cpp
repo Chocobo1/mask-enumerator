@@ -1,24 +1,17 @@
 #include "mask_enum.hpp"
 
 
-MaskEnum::MaskEnum( const uint32_t val , const uint32_t mask )
+MaskEnum::MaskEnum( const uint32_t val , const uint32_t mask ) : base( val &mask ) , range( 0 ) , counter( 0 )
 {
-	const uint32_t base = val & mask;
-	my_set.emplace( base );
-
 	uint32_t p = 1;
 	const uint32_t inv_mask = ~mask;
-	const size_t max_range = std::max( intLog2( val ) , intLog2( mask ) );
-	for( size_t i = 0 ; i <= max_range ; ++i )  // scan for don't care bits
+	const size_t max_i = std::max( intLog2( val ) , intLog2( mask ) );
+	for( size_t i = 0 ; i <= max_i ; ++i )  // scan for don't care bits
 	{
 		if( p & inv_mask )  // encountered don't care bit
 		{
-			decltype( my_set ) tmp_set;
-			for( const auto &j : my_set )
-			{
-				tmp_set.emplace_hint( tmp_set.cend() , j + p );
-			}
-			my_set.insert( tmp_set.cbegin() , tmp_set.cend() );
+			bit_pos[ range ] = i;
+			++range;
 		}
 		p <<= 1;
 	}
@@ -27,9 +20,29 @@ MaskEnum::MaskEnum( const uint32_t val , const uint32_t mask )
 }
 
 
-const MaskEnum::MaskEnumSet *MaskEnum::getOutput() const
+bool MaskEnum::haveMore() const
 {
-	return &my_set;
+	const size_t a = ( 1 << range );
+	if( counter < a )
+		return true;
+	return false;
+}
+
+
+uint32_t MaskEnum::getOutput()
+{
+	if( !haveMore() )
+		return 0;
+
+	const size_t i = counter;
+	uint32_t result = base;
+	for( size_t j = 0 ; j < range ; ++j )  // scan through each don't care bit
+	{
+		result += ( 1 << bit_pos[ j ] ) * ( ( i >> j ) & 0b1 );
+	}
+
+	++counter;
+	return result;
 }
 
 
