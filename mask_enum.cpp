@@ -20,7 +20,7 @@ MaskEnum::MaskEnum( const uint32_t val , const uint32_t mask ) : base( val & mas
 }
 
 
-size_t MaskEnum::numOfResult() const
+size_t MaskEnum::numOfResults() const
 {
 	return ( 1 << range );
 }

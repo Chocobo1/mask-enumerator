@@ -9,7 +9,7 @@ class MaskEnum
 {
 	public:
 		explicit MaskEnum( const uint32_t val , const uint32_t mask );
-		size_t numOfResult() const;
+		size_t numOfResults() const;
 		uint32_t getOutput();  // only valid in range of [ 0 , numOfResult() - 1 ]
 
 
