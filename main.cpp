@@ -24,6 +24,7 @@ int main( const int argc , char *argv[] )
 	MaskEnum a( val , mask );
 
 	// output results
+	printf( "value: %u, mask: 0x%x\n\nResults:\n" , val , mask );
 	for( size_t i = 0 ; i < a.numOfResults() ; ++i )
 	{
 		printf( "%u\n" , a.getNum() );
