@@ -10,7 +10,7 @@ MaskEnum::MaskEnum( const uint32_t val , const uint32_t mask ) : base( val & mas
 	{
 		if( p & inv_mask )  // encountered don't care bit
 		{
-			bit_pos[ range ] = i;
+			bit_base[ range ] = p;
 			++range;
 		}
 		p <<= 1;
@@ -31,7 +31,7 @@ uint32_t MaskEnum::getNum()
 	uint32_t result = base;
 	for( size_t i = 0 ; i < range ; ++i )  // scan through each don't care bit
 	{
-		result += ( 1 << bit_pos[ i ] ) * ( ( counter >> i ) & 0b1 );
+		result += bit_base[ i ] * ( ( counter >> i ) & 0b1 );
 	}
 
 	++counter;
