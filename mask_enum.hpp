@@ -18,7 +18,7 @@ class MaskEnum
 
 		const uint32_t base;
 		uint32_t bit_base[ 32 ];  // don't care bit value
-		size_t range;  // index for bit_pos
+		size_t range;  // index for bit_base
 
 		size_t counter;
 };
