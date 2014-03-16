@@ -1,7 +1,7 @@
 #include "mask_enum.hpp"
 
 
-MaskEnum::MaskEnum( const uint32_t val , const uint32_t mask ) : base( val &mask ) , range( 0 ) , counter( 0 )
+MaskEnum::MaskEnum( const uint32_t val , const uint32_t mask ) : base( val & mask ) , range( 0 ) , counter( 0 )
 {
 	uint32_t p = 1;
 	const uint32_t inv_mask = ~mask;
@@ -28,11 +28,10 @@ size_t MaskEnum::numOfResult() const
 
 uint32_t MaskEnum::getOutput()
 {
-	const size_t i = counter;
 	uint32_t result = base;
-	for( size_t j = 0 ; j < range ; ++j )  // scan through each don't care bit
+	for( size_t i = 0 ; i < range ; ++i )  // scan through each don't care bit
 	{
-		result += ( 1 << bit_pos[ j ] ) * ( ( i >> j ) & 0b1 );
+		result += ( 1 << bit_pos[ i ] ) * ( ( counter >> i ) & 0b1 );
 	}
 
 	++counter;
