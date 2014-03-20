@@ -11,4 +11,4 @@ Must support C++
 This program is licensed under zlib License
 
 ## Notes
-This program is to verify the solution of [Mask calcuator](https://bitbucket.org/27049215/mask-calcuator)
+This program was created to verify the solution of [Mask calcuator](https://bitbucket.org/27049215/mask-calcuator)
