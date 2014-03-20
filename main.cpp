@@ -1,3 +1,7 @@
+/* Copyright (C) 2014 Mike Tzou
+*  For conditions of distribution and use, see copyright notice in file "COPYING"
+*/
+
 #include <cstdio>
 #include <cstdlib>
 #include <string>
