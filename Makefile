@@ -1,13 +1,13 @@
 # Makefile
 
 # compiler options
-CXX			= g++ # -pg
-CXXFLAGS	= -pipe -Wall -O2 -mtune=native # -Wfatal-errors -g -ggdb
-LDFLAGS		= -s
-SRC_NAME	= main mask_enum
-LIBS		=
-EXECUTABLE	= mask_enum
-SRC_EXT		= cpp
+CXX			+= # -pg
+CXXFLAGS	 = -pipe -Wall -O2 -mtune=native # -Wfatal-errors -g -ggdb
+LDFLAGS		 = -s
+SRC_NAME	 = main mask_enum
+LIBS		 =
+EXECUTABLE	 = mask_enum
+SRC_EXT		 = cpp
 
 
 # targets
